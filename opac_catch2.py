@@ -23,7 +23,6 @@ driver.close()
 driver.switch_to.window("opac")
 name = driver.find_elements_by_class_name('name')
 html = driver.page_source
-driver.close()
 
 data = html.split('<td class="list_result">',1)
 link = data[1].split('</div><div class="link_block">',1)
@@ -38,6 +37,7 @@ for n in range(len(name)):
     f.write(m[0]+'\n')
     book_data.append(Book_data(book_name[0], m[0]))
 
+driver.close()
 
 for n in range(len(book_data)):
     book_data[n].show_info()
