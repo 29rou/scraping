@@ -1,4 +1,4 @@
-#seleniumというブラウザを操作できるモジュールを使用。
+#seleniumというブラウザを操作できるモジュールを使用する。
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
@@ -7,15 +7,15 @@ output_file = open(output_file_dir,'w')
 search_word = '機械学習'
 book_data = [] #書籍情報(Book_dataインスタンス)のリスト
 
-#本のタイトルとリンクを紐付けの為及び汎用性向上のためクラスを作成
+#本のタイトルとリンクを紐付けの為及び汎用性向上のためクラスを作成する。
 class Book_data():
-    instance_count = 0 #インスタンスの数をしめす
+    instance_count = 0 #インスタンスの数をしめす。
     def __init__(self,data,output):
         self.no = self.next()
         self.name ,self.link = self.extract_data(data)
         self.write_file(output)
     @classmethod
-    def next(cls):#インスタンスのカウント
+    def next(cls):#インスタンスを数える。
         cls.instance_count +=1
         return cls.instance_count
     def extract_data(self,data):
@@ -37,14 +37,14 @@ class Book_data():
         file.write('Link:'+self.link+'\n')
         file.write('\n')
 
-#ドライバーの場所、ドライバーは各々でダウンロードして用意
+#ドライバーの場所、ドライバーは各々でダウンロードして用意する。
 driver_dir = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
 driver = webdriver.Chrome(driver_dir) #クローム用のドライバー呼び出し。
 driver.get("http://www-lib.icu.ac.jp/")
 driver.find_element_by_name('kywd').send_keys(search_word)
 driver.find_element_by_name('kywd').send_keys(Keys.RETURN)
 driver.close()
-driver.switch_to.window("opac") #検索結果を表示したウインドウに移動。
+driver.switch_to.window("opac") #検索結果を表示したウインドウに移動す
 html = driver.page_source #HTMLの取得
 
 
@@ -52,14 +52,14 @@ html = driver.page_source #HTMLの取得
 html_cut_head = html.split('<div id="main_list">',1)
 #データの整形:必要のないHTMLコードの下部分を除去
 html_cut_last = html_cut_head[1].split('</div><div class="link_block">',1)
-#本のデータを塊ごとをリストに入れる
+#本のデータを塊ごとをリストに入れる。
 data = html_cut_last[0].split('<span class="name">')
 
 #本のデータをクラスに入れる。
 for n in range(1,len(data)):
     book_data.append(Book_data(data[n],output_file))
 
-driver.close() #ウインドウを閉じる
+driver.close() #ウインドウを閉じる。
 
 #データの出力
 for n in range(len(book_data)):
