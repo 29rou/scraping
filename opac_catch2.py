@@ -10,6 +10,9 @@ class Book_data:
     def show_info(self):
         print('Book:', self.name)
         print('Link:', self.link)
+    def write_file(self,file):
+        f.write(self.name+'\n')
+        f.write(self.link+'\n')
 
 #カレントディレクトリに結果を出力する。
 f = open('./test.text','w')
@@ -34,13 +37,12 @@ for n in range(len(name)):
     m = book_link[n-1].split('<s',1)
     book_name = name[n].text.split("/")
     print(n, end=' ')
-    f.write(book_name[0]+'\n')
-    f.write(m[0]+'\n')
     book_data.append(Book_data(book_name[0], m[0]))
 
 driver.close()
 
 for n in range(len(book_data)):
+    book_data[n].write_file(f)
     book_data[n].show_info()
 
 
