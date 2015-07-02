@@ -29,7 +29,7 @@ book_link = link[0].split('<span class="name">')
     #print(book[0])
     #f.write(book[0]+'\n')
 for n in range(len(name)):
-    m = book_link[n-1].split('<',1)
+    m = book_link[n-1].split('<s',1)
     book_name = name[n].text.split("/")
     print(n)
     print(book_name[0])
