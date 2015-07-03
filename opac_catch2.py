@@ -52,7 +52,7 @@ html = driver.page_source #HTMLの取得
 html_cut_head = html.split('<div id="main_list">',1)
 #データの整形:必要のないHTMLコードの下部分を除去
 html_cut_last = html_cut_head[1].split('</div><div class="link_block">',1)
-#本のデータを塊ごとをリストに入れる
+#本のデータを塊ごとをリストに入れる。data[0]には書籍データが入っていない。
 data = html_cut_last[0].split("""<a href="javascript:DisplayWindow('""")
 
 #本のデータをクラスに入れる。
