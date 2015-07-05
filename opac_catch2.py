@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 output_file_dir = './test.text' #出力先
 output_file = open(output_file_dir,'w')
 search_word = '機械学習'
+search_word = input()
 book_data = [] #書籍情報(Book_dataインスタンス)のリスト
 
 #本のタイトルとリンクを紐付けの為及び汎用性向上のためクラスを作成
@@ -38,9 +39,9 @@ class Book_data():
         file.write('\n')
 
 #ドライバーの場所、ドライバーは各々でダウンロードして用意
-driver_dir = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
-driver = webdriver.Chrome(driver_dir) #クローム用のドライバー呼び出し。
-#driver = webdriver.Firefox()
+#driver_dir = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
+#driver = webdriver.Chrome(driver_dir) #クローム用のドライバー呼び出し。
+driver = webdriver.Firefox()
 driver.get("http://www-lib.icu.ac.jp/")
 driver.find_element_by_name('kywd').send_keys(search_word)
 driver.find_element_by_name('kywd').send_keys(Keys.RETURN)
