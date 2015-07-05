@@ -39,9 +39,9 @@ class Book_data():
         file.write('\n')
 
 #ドライバーの場所、ドライバーは各々でダウンロードして用意
-#driver_dir = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
-#driver = webdriver.Chrome(driver_dir) #クローム用のドライバー呼び出し。
-driver = webdriver.Firefox()
+driver_dir = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
+driver = webdriver.Chrome(driver_dir) #クローム用のドライバー呼び出し。
+#driver = webdriver.PhantomJS()
 driver.get("http://www-lib.icu.ac.jp/")
 driver.find_element_by_name('kywd').send_keys(search_word)
 driver.find_element_by_name('kywd').send_keys(Keys.RETURN)
