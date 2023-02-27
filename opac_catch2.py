@@ -22,7 +22,7 @@ class Book_data():
     def extract_data(self,data):
         #リンクの抽出
         tmp = data.split("""','1');"><strong>""")
-        book_link = 'https://opac.icu.ac.jp' + tmp[0]
+        book_link = f'https://opac.icu.ac.jp{tmp[0]}'
         #書籍名の抽出
         tmp2 = tmp[1].split('</strong>',1)
         tmp3 = tmp2[0].split('/',1)
@@ -33,9 +33,9 @@ class Book_data():
         print('Name:', self.name)
         print('Link:', self.link)
     def write_file(self,file):
-        file.write('No:'+str(self.no)+'\n')
-        file.write('Name:'+self.name+'\n')
-        file.write('Link:'+self.link+'\n')
+        file.write(f'No:{str(self.no)}' + '\n')
+        file.write(f'Name:{self.name}' + '\n')
+        file.write(f'Link:{self.link}' + '\n')
         file.write('\n')
 
 #ドライバーの場所、ドライバーは各々でダウンロードして用意
